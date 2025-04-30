@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-
+import Navbar from './components/Navbar'
 
 export default function HomeElement()  {
     const [data,setData]=useState([])
@@ -23,7 +23,8 @@ export default function HomeElement()  {
 
   return (
     <div>
-        <img src="./pic1.png" alt="" style={{width:"10em"}}/>
+        <Navbar/>
+        <img src="./pic3.png" alt="" style={{width:"100%",height:"100vh"}}/>
         {data.map((e,i)=>(
                 <li key={i}>{e.FIRST_NAME}</li>
         ))}

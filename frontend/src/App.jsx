@@ -9,9 +9,9 @@ function App() {
   ]) 
 
 return (
-  <>
+  <div style={{width:"98.9vw",height:"100vh"}}>
     <RouterProvider router={router}/>
-  </>
+  </div>
 )
 }
 
