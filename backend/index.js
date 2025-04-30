@@ -26,6 +26,16 @@ app.get('/home',async(req,res)=>{
    
    res.json({message:data})
 })
+
+app.get('/about',async(req,res)=>{
+
+})
+app.get('/menu',async(req,res)=>{
+    
+})
+app.get('/booking',async(req,res)=>{
+    
+})
 app.listen(200,()=>{
     console.log("app is listening")
 })
