@@ -4,22 +4,34 @@ import axios from 'axios'
 
 const Booking = () => {
   const [formData,setFormData]=useState({
-    bookingInput:"",
-    NumberOfSeats:0,
-    Level:"",
-    Date:"",
-    Time:""
+    ReservationName:"",
+    NumberOfSeats:"",
+    LevelOfReservation:"",
+    DateOfReservation:"",
+    TimeOfReservation:""
   })
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.name]:e.target.value})
   }
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault()
-    try{
-
+    console.log(formData)
+    
+        try{
+        await axios.post("http://localhost:200/booking",formData)
+        .then(
+          setFormData({
+            ReservationName:"",
+            NumberOfSeats:"",
+            LevelOfReservation:"",
+            DateOfReservation:"",
+            TimeOfReservation:""
+          })
+        )
     }catch(error){
-      console.log()
+      console.log(error)
     }
+
   }
 
   return (
@@ -29,7 +41,7 @@ const Booking = () => {
       </div>
 
       <div className="bookingChild" id='bookingForm'>
-        <form action="" id='bookingForm' onSubmit={handleSubmit}>
+        <form action="/booking" id='bookingForm' onSubmit={handleSubmit}>
           <input type="text" 
           className="bookingInput" 
           name='ReservationName'

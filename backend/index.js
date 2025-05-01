@@ -35,6 +35,13 @@ app.get('/menu',async(req,res)=>{
 app.get('/booking',async(req,res)=>{
 
 })
+
+app.post('/booking',async(req,res)=>{
+    const {ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation}=req.body
+    console.log(ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation)
+})
+
+
 app.listen(200,()=>{
     console.log("app is listening")
 })
