@@ -22,7 +22,7 @@ function App() {
   ]);
 
 return (
-  <div style={{width:"98.9vw",height:"100vh"}}>
+  <div style={{width:"100vw",border:"2px solid blue"}}>
     <RouterProvider router={router}/>
   </div>
 )

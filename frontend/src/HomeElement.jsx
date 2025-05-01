@@ -25,7 +25,7 @@ export default function HomeElement()  {
     <div>
         <img src="./pic3.png" alt="" style={{width:"100%",height:"100vh"}}/>
         {data.map((e,i)=>(
-                <li key={i}>{e.FIRST_NAME}</li>
+                <li key={i}>{e}</li>
         ))}
         
     </div>

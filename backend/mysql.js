@@ -20,7 +20,7 @@ class mysqlServices{
     const rows=await methodCallback.call(dbService); 
     return rows 
   }
-  async fetchData(){
+  /*async fetchData(){
       try {
           const [rows] = await this.connection.execute('SELECT * FROM emp_records');
           await this.connection.end();
@@ -28,6 +28,16 @@ class mysqlServices{
       } catch (error) {
           console.error('Error:', error);
       } 
+  }*/
+
+  async fetchReservationData(){
+    try{
+      const [rows]=await this.connection.execute('SELECT * FROM reservations')
+      await this.connection.end()
+      return rows
+    }catch(error){
+      console.log('Some error occured',error)
+    }
   }
 
  

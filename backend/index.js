@@ -22,11 +22,10 @@ dotenv.config();
 
 app.get('/home',async(req,res)=>{
    // console.log(
-   const data=await mysqlServices.run(mysqlServices.prototype.fetchData)
-   
+   //const data=await mysqlServices.run(mysqlServices.prototype.fetchData)
+   const data=[1,2,3,4,5]
    res.json({message:data})
 })
-
 app.get('/about',async(req,res)=>{
 
 })
@@ -34,7 +33,7 @@ app.get('/menu',async(req,res)=>{
     
 })
 app.get('/booking',async(req,res)=>{
-    
+
 })
 app.listen(200,()=>{
     console.log("app is listening")
