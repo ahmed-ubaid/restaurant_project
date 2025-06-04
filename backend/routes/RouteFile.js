@@ -13,23 +13,20 @@ router.get('/id',(req,res)=>{
 
 
 router.get('/home',async(req,res)=>{
-   //const data=await mysqlServices.run(mysqlServices.prototype.fetchReservationData)
-   //console.log(data)
 })
+
 router.get('/about',async(req,res)=>{
-
 })
+
 router.get('/menu',async(req,res)=>{
-    
 })
-router.get('booking',async(req,res)=>{
 
+router.get('/booking',async(req,res)=>{
 })
+
 router.get('/payment',async(req,res)=>{
-    console.log("here")
-    /*const {ReservationName,NumberOfSeats,LevelOfReservation}=req.query
-    console.log(utility.calculatePrice(NumberOfSeats,LevelOfReservation))*/
 })
+
 router.post('/booking',async(req,res)=>{
     const {ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation}=req.body
     

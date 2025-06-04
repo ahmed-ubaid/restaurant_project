@@ -55,6 +55,25 @@ class mysqlServices{
       console.log('Some error occured',error)
     }
   }
+
+  async cancelReservation(reId){
+    try{
+      await this.connection.execute('SET SQL_SAFE_UPDATES = 0;')
+      
+      const [rows] = await this.connection.execute(
+      'DELETE FROM reservations WHERE res_id = ?',
+      [reId]
+    );
+      
+      await this.connection.execute('SET SQL_SAFE_UPDATES = 1;')
+      
+      await this.connection.end()
+      
+      return rows
+    }catch(error){
+      console.log('some error ocrued',error)
+    }
+  }
 }
 
 
