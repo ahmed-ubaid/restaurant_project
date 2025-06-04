@@ -4,3 +4,8 @@
  margin: 0px;
 }
 
+#appDiv{
+
+    width: 100vw;
+    height: 100%;
+}

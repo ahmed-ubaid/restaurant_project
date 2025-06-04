@@ -1,0 +1,79 @@
+#bookingParent{
+    margin-top: 5em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40em;
+    justify-content: center;
+    color: black;
+}
+
+.bookingChild{
+    width: 35%;
+    height: 100%;
+    margin: 0em 1em;
+    border-radius:30px;
+    background-color: rgba(0, 0, 0, 0.839);
+}
+
+#bookingText{
+    width: 30%;
+}
+
+#bookingForm{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#FormBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #d58e42;
+    border-radius:30px;
+    height: 90%;
+    width: 90%;
+}
+
+.bookingInput{
+    width: 55%;
+    height: 3em;
+    font-size: 1em;
+    background-color: rgba(0, 0, 0, 0.839);
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    padding-right: 0.5rem;
+}
+.bookingInput::placeholder{
+    color: white;
+}
+  input:focus,
+  input:valid,
+  input:hover,
+  input:active {
+    background-color: rgba(0, 0, 0, 0.839); /* same as default */
+    outline: none;
+  }
+
+  input[type="text"]:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1f150a inset !important;
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+#DateOfReservation{
+    background-color: rgba(0, 0, 0, 0.839);
+    color: white;
+    font-size: 1em;
+}
+
+#LevelOfReservation{
+  appearance: none;
+  width: 57%;
+}
+
+

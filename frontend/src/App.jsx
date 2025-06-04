@@ -1,10 +1,11 @@
 import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import './App.css'
-import HomeElement from './HomeElement'
+import HomeElement from './pages/HomeElement'
 import About from "./pages/About"
 import Menu from "./pages/Menu"
 import Booking from "./pages/Booking"
 import Navbar from "./components/Navbar"
+import Payment from "./pages/Payment"
 
 function App() { 
   const router=createBrowserRouter([
@@ -16,13 +17,15 @@ function App() {
         { path: 'home', element: <HomeElement /> },
         { path: 'about', element: <About /> },
         { path: 'menu', element: <Menu /> },
-        { path: 'booking', element: <Booking /> },
+        { path: 'booking', element: <Booking /> }
       ]
-    }
+    },
+    {path:'/payment',element:<Payment/>}
+    
   ]);
 
 return (
-  <div style={{width:"100vw",border:"2px solid blue"}}>
+  <div id="appDiv" >
     <RouterProvider router={router}/>
   </div>
 )
