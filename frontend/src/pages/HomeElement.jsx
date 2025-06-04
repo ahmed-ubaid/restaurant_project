@@ -23,10 +23,7 @@ export default function HomeElement()  {
 
   return (
     <div>
-        {data.map((e,i)=>(
-                <li key={i}>{e}</li>
-        ))}
-        
+        HOME
     </div>
   )
 }
