@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Booking = () => {
   const navigate=useNavigate()
   const [formData,setFormData]=useState({
+    email:"",
     ReservationName:"",
     NumberOfSeats:"",
     LevelOfReservation:"",
@@ -24,6 +25,7 @@ const Booking = () => {
         .then((res)=>{
           if(res.data.message==='ok'){
           setFormData({
+            email:"",
             ReservationName:"",
             NumberOfSeats:"",
             LevelOfReservation:"",
@@ -47,7 +49,18 @@ const Booking = () => {
       </div>
 
       <div className="bookingChild" id='bookingForm'>
+
         <form action="/booking" id='FormBody' onSubmit={handleSubmit}>
+          
+          <input type="email" 
+          className="bookingInput formChild" 
+          name='email'
+          id='email'
+          placeholder='Enter your Email'
+          onChange={handleChange}
+          required
+          />
+
           <input type="text" 
           className="bookingInput formChild" 
           name='ReservationName'

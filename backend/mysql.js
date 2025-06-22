@@ -1,6 +1,7 @@
 const CryptoJS = require('crypto-js');
 const mysql = require('mysql2/promise');
-
+const UtilityClass= require("./functions/UtilityClass");
+const utility=new UtilityClass()
 
 
 class mysqlServices{
@@ -26,17 +27,19 @@ class mysqlServices{
     
   }
 
-  async saveReservation(ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation){
+  async saveReservation(ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation,email){
     try{
-      const res_id=CryptoJS.SHA256(`${ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation}`).toString(CryptoJS.enc.Hex)
+      const res_id=CryptoJS.SHA256(`${email}${Date.now()}`).toString(CryptoJS.enc.Hex)
 
       const [rows]=await this.connection.execute(
-      `INSERT INTO reservations (res_id, ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [res_id, ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation]
-    );
+        `INSERT INTO reservations (res_id, ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation,email)
+        VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [res_id, ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation,email]
+      );
 
-      console.log(`${ReservationName},${NumberOfSeats},${LevelOfReservation},${DateOfReservation},${TimeOfReservation}} inserted`)
+      //utility.sendEmail(email,res_id.slice(-6))
+
+      console.log(`${ReservationName},${NumberOfSeats},${LevelOfReservation},${DateOfReservation},${TimeOfReservation},${email} inserted`)
 
       await this.connection.end()
       return rows

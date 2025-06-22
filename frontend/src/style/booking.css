@@ -1,27 +1,25 @@
 #bookingParent{
     margin-top: 5em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    height: 40em;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     color: black;
+    border: 2px solid white;
 }
 
 .bookingChild{
-    width: 35%;
-    height: 100%;
-    margin: 0em 1em;
+    width: 95%;
+    height: 40em;
+    margin: 1em;
     border-radius:30px;
     background-color: rgba(0, 0, 0, 0.839);
 }
 
-#bookingText{
-    width: 30%;
-}
 
 #bookingForm{
-    width: 50%;
+    height: 42em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,11 +33,11 @@
     background-color: #d58e42;
     border-radius:30px;
     height: 90%;
-    width: 90%;
+    width: 40%;
 }
 
 .bookingInput{
-    width: 55%;
+    width: 65%;
     height: 3em;
     font-size: 1em;
     background-color: rgba(0, 0, 0, 0.839);
@@ -73,7 +71,7 @@
 
 #LevelOfReservation{
   appearance: none;
-  width: 57%;
+  width: 68%;
 }
 
 

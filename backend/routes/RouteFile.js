@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-
+const CryptoJS = require('crypto-js');
 
 const mysql = require('mysql2/promise');
 const mysqlServices=require("../mysql");
@@ -13,6 +13,11 @@ router.get('/id',(req,res)=>{
 
 
 router.get('/home',async(req,res)=>{
+    try{
+        console.log(await mysqlServices.run(mysqlServices.prototype.fetchReservationData))
+    }catch(error){
+        console.log("something went wrong")
+    }
 })
 
 router.get('/about',async(req,res)=>{
@@ -28,17 +33,20 @@ router.get('/payment',async(req,res)=>{
 })
 
 router.post('/booking',async(req,res)=>{
-    const {ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation}=req.body
+    const {email,ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation}=req.body
     
-    res.json({message:"ok"})
+    const res_id=CryptoJS.SHA256(`${ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation,email}`).toString(CryptoJS.enc.Hex)
     
-    console.log(ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation)
+    console.log(res_id)
     
-    await mysqlServices.run(mysqlServices.prototype.saveReservation,ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation);
+    try{
+        await mysqlServices.run(mysqlServices.prototype.saveReservation,ReservationName, NumberOfSeats, LevelOfReservation, DateOfReservation, TimeOfReservation,email);
+        
+    }catch(error){
+        console.log("Something went wrong")
+    }
 
-    //await mysqlServices.run(Sobj.saveReservation(ReservationName,NumberOfSeats,LevelOfReservation,DateOfReservation,TimeOfReservation))
-    //const data=await mysqlServices.run(mysqlServices.prototype.fetchData)
-    // res.redirect(`/payment?ReservationName=${ReservationName}&NumberOfSeats=${NumberOfSeats}&LevelOfReservation=${LevelOfReservation}`)
+    res.json({message:"ok"})
 })
 
 

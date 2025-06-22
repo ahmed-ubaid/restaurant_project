@@ -1,3 +1,8 @@
+const dotenv=require('dotenv');
+dotenv.config();
+const nodemailer = require('nodemailer');
+
+
 class UtilityClass{
     calculatePrice(num,rank){
         num=Number(num)
@@ -10,6 +15,31 @@ class UtilityClass{
             case "diamond":
                 return num>5?num*3:num*4
         }
+    }
+
+    sendEmail(UserEmail,password){
+        const transporter = nodemailer.createTransport({
+            secure:true,
+            host: 'smtp.gmail.com',
+            post:465,
+            auth: {
+            user: `${process.env.EMAIL}`,
+            pass: `${process.env.EMAILPASS}` // use App Password if 2FA is on
+            }
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: UserEmail,
+            subject: 'Your Access Password',
+            text: `Your password is: ${password}`
+        };
+
+        transporter.sendMail(mailOptions);
+    }
+
+    printStuff(UserEmail,password){
+        console.log(`email:${UserEmail} password:${password}`)
     }
 }
 
